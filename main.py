@@ -2,14 +2,21 @@ import tkinter as tk
 from tkinter import messagebox
 import database
 
+#para crear la base de datos si no existe
+database.crear_tabla()
 def agregar_vaca():
     nombre = entry_nombre.get()
     fecha_inseminacion = entry_fecha_inseminacion.get()
     cantidad_partos = entry_cantidad_partos.get()
     fecha_posible_parto = entry_fecha_posible_parto.get()
     fecha_secado = entry_fecha_secado.get()
-    concepcion_exitosa = entry_concepcion_exitosa.get()
-    observaciones = entry_observaciones.get()
+    concepcion_exitosa = var_concepcion_exitosa.get()
+    observaciones = text_observaciones.get("1.0", tk.END).strip()
+
+    if not nombre:
+        messagebox.showwarning("Advertencia", "El nombre es obligatorio.")
+        return
+
 
     database.insertar_vaca(nombre, fecha_inseminacion, cantidad_partos, fecha_posible_parto, fecha_secado, concepcion_exitosa, observaciones)
 
@@ -60,3 +67,7 @@ def agregar_vaca():
 
     tk.Button(root, text="Guardar", command=agregar_vaca).grid(row=7, column=0, pady=10)
     tk.Button(root, text="Limpiar", command=limpiar_campos).grid(row=7, column=1, pady=10)
+
+
+    root.mainloop()
+    
