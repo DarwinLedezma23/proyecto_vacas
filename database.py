@@ -11,7 +11,7 @@ def crear_tabla():
         cantidad_partos INTEGER,
         fecha_posible_parto TEXT,
         fecha_secado TEXT,
-        concepcion exitosa TEXT,
+        concepcion_exitosa TEXT,
         observaciones TEXT
     )
     """)
